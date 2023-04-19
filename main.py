@@ -21,12 +21,10 @@
 
 
 def distribute():
-    heroes, mission = request()
-
     skills = []
     names = []
     skills_reqired = []
-
+    heroes, mission = request()
     skills_reqired = mission[mission.index("(")+1:mission.rindex(")")]
     skills_reqired = skills_reqired.split(",")
     parse_heroes_skills(heroes, names, skills)
@@ -40,12 +38,12 @@ def distribute():
 
     return (write_answer(counter, skills_reqired, skills, names))
 
+# Запрашивает у пользователя имена, навыки героев и миссию
+
 
 def request():
-    # heroes = input()
-    # mission = input()
-    heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )), ("Добрыня Н.", (2, 3)))'
-    mission = 'mission = (1,1,2)'
+    heroes = input()
+    mission = input()
     return heroes, mission
 
 # Разбивает и парсит имена героев и их скилы
