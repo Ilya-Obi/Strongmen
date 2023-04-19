@@ -26,7 +26,7 @@ def distribute():
         *sorted(zip(counter, skills_reqired)))
     skills, names = zip(
         *sorted(zip(skills, names), key=lambda x: len(x[0])))
-    # logger(counter, skills_reqired, skills, names)
+    logger(counter, skills_reqired, skills, names)
     answer_writer(counter, skills_reqired, skills, names)
     print(answer_writer(counter, skills_reqired, skills, names))
     return (answer_writer(counter, skills_reqired, skills, names))
