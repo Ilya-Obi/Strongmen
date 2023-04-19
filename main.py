@@ -56,7 +56,7 @@ def parse_heroes_skills(heroes, names, skills):
             pass
     skills[len(skills)-1] = skills[len(skills)-1].replace("))", "")
 
-# Разбивает и парсит строку миси
+# Разбивает и парсит строку миссии
 
 
 def parse_mission(skills_reqired, mission):
