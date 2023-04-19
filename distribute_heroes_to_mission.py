@@ -1,27 +1,9 @@
-# Список входных данных по примеру
-
-# heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )), ("Добрыня Н.", (2, 3)))'
-# mission = 'mission = (1,1,2)'
-
-# heroes = 'heroes = (("Илья М.", (1, 2, 3)),)'
-# mission = 'mission = (1,)'
-
-# heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )),)'
-# mission = 'mission = (1, 2)'
-
-# heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )),)'
-# mission = 'mission = (1, 5)'
-
-# Входные данные
-# heroes = input()
-# mission = input()
-
-
 # Главный метод, вызывающий остальные, обрабатыващие и выводящие данные.
-def distribute_heroes_to_mission():
+
+
+def distribute_heroes_to_mission(heroes, mission):
     skills = []
     names = []
-    heroes, mission = request_heroes_mission()
     skills_reqired = parse_mission(mission)
     parse_heroes_skills(heroes, names, skills)
     available_hero_counter = count_skills(skills_reqired, skills)
@@ -39,16 +21,6 @@ def sort_result(available_hero_counter, skills_reqired, skills, names):
     skills, names = zip(
         *sorted(zip(skills, names), key=lambda x: len(x[0])))
     return available_hero_counter, skills_reqired, skills, names
-
-# Запрашивает у пользователя имена, навыки героев и миссию.
-
-
-def request_heroes_mission():
-    heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )), ("Добрыня Н.", (2, 3)))'
-    mission = 'mission = (1,1,2)'
-    # heroes = input()
-    # mission = input()
-    return heroes, mission
 
 # Разбивает и парсит имена героев и их скилы.
 
@@ -94,6 +66,8 @@ def count_skills(skills_reqired, skills):
 
 
 # Подготавливает строку ответа со списком героев, если они могут выполнить миссию.
+
+
 def prepare_answer(counter, skills_reqired, skills, names):
     answer = []
     names_copy = list(names)
