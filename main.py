@@ -8,28 +8,18 @@
 heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )),)'
 mission = 'mission = (1, 2)'
 
-skills = []
-names = []
-skills_reqiredired = []
-
 
 def distribute():
+    skills = []
+    names = []
+    skills_reqired = []
     skills_reqired = mission[mission.index("(")+1:mission.rindex(")")]
     skills_reqired = skills_reqired.split(",")
-    parse_mission(skills_reqired, mission)
     parse_heroes_skills(heroes, names, skills)
+    parse_mission(skills_reqired, mission)
     counter = [0]*len(skills)
-    skill_counter(counter, skills_reqired)
-
-    # counter = [0]*len(skills)
-    # for i, skill_r in enumerate(skills_reqired):
-    #     for skill in skills:
-    #         if skill_r in skill:
-    #             counter[i] += 1
-    print(counter)
-    print(skills_reqired)
-    print(skills)
-    print(names)
+    skill_counter(counter, skills_reqired, skills)
+    logger(counter, skills_reqired, skills, names)
 
 
 def parse_heroes_skills(heroes, names, skills):
@@ -55,12 +45,19 @@ def parse_mission(skills_reqired, mission):
             skills_reqired.pop(i)
 
 
-def skill_counter(counter, skills_reqired):
+def skill_counter(counter, skills_reqired, skills):
 
     for i, skill_r in enumerate(skills_reqired):
         for skill in skills:
             if skill_r in skill:
                 counter[i] += 1
+
+
+def logger(counter, skills_reqired, skills, names):
+    print(counter)
+    print(skills_reqired)
+    print(skills)
+    print(names)
 
 
 distribute()
