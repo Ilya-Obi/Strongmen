@@ -1,6 +1,6 @@
 
-# heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )), ("Добрыня Н.", (2, 3)))'
-# mission = 'mission = (1,1,2)'
+heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )), ("Добрыня Н.", (2, 3)))'
+mission = 'mission = (1,1,2)'
 
 # heroes = 'heroes = (("Илья М.", (1, 2, 3)),)'
 # mission = 'mission = (1,)'
@@ -8,8 +8,8 @@
 # heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )),)'
 # mission = 'mission = (1, 2)'
 
-heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )),)'
-mission = 'mission = (1, 5)'
+# heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )),)'
+# mission = 'mission = (1, 5)'
 
 
 def distribute():
@@ -28,7 +28,8 @@ def distribute():
         *sorted(zip(skills, names), key=lambda x: len(x[0])))
     # logger(counter, skills_reqired, skills, names)
     answer_writer(counter, skills_reqired, skills, names)
-    # return (answer_writer(counter, skills_reqired, skills, names))
+    print(answer_writer(counter, skills_reqired, skills, names))
+    return (answer_writer(counter, skills_reqired, skills, names))
 
 
 def parse_heroes_skills(heroes, names, skills):
@@ -76,7 +77,6 @@ def answer_writer(counter, skills_reqired, skills, names):
     skills_reqired_copy = list(skills_reqired)
     skills_copy = list(skills_reqired)
     if counter[0] == 0:
-        print([])
         return answ
     else:
         for skill_req in skills_reqired_copy:
@@ -88,7 +88,6 @@ def answer_writer(counter, skills_reqired, skills, names):
                     except Exception:
                         pass
     if names_copy == []:
-        print(answ)
         return answ
     else:
         return []
