@@ -1,6 +1,7 @@
+# Список входных данных по примеру
 
-heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )), ("Добрыня Н.", (2, 3)))'
-mission = 'mission = (1,1,2)'
+# heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )), ("Добрыня Н.", (2, 3)))'
+# mission = 'mission = (1,1,2)'
 
 # heroes = 'heroes = (("Илья М.", (1, 2, 3)),)'
 # mission = 'mission = (1,)'
@@ -10,6 +11,13 @@ mission = 'mission = (1,1,2)'
 
 # heroes = 'heroes = (("Илья М.", (1, 2, 3)), ("Алёша П.", (1, )),)'
 # mission = 'mission = (1, 5)'
+
+# Входные данные
+heroes = input()
+mission = input()
+
+# Главный метод, вызывающий остальные, обрабатыващие данные. Также реализует те функции, которые не удалось
+# выполнить в подметодах
 
 
 def distribute():
@@ -31,20 +39,24 @@ def distribute():
     print(answer_writer(counter, skills_reqired, skills, names))
     return (answer_writer(counter, skills_reqired, skills, names))
 
+# Разбивает и парсит имена героев и их скилы
+
 
 def parse_heroes_skills(heroes, names, skills):
     heroes = heroes[8:]
     heroes_cut = heroes.split("),")
-    for h in heroes_cut:
+    for hero in heroes_cut:
         try:
-            names.append(h[h.index('"')+1: h.rindex('"')])
+            names.append(hero[hero.index('"')+1: hero.rindex('"')])
         except Exception:
             pass
         try:
-            skills.append(h[h.index(",")+3:h.rindex(")")])
+            skills.append(hero[hero.index(",")+3:hero.rindex(")")])
         except Exception:
             pass
     skills[len(skills)-1] = skills[len(skills)-1].replace("))", "")
+
+# Разбивает и парсит строку миси
 
 
 def parse_mission(skills_reqired, mission):
@@ -55,6 +67,8 @@ def parse_mission(skills_reqired, mission):
         if (skills_reqired[i]) == "":
             skills_reqired.pop(i)
 
+# Считает сколько героев могут выполнить задания определенного уровня
+
 
 def skill_counter(counter, skills_reqired, skills):
 
@@ -63,12 +77,16 @@ def skill_counter(counter, skills_reqired, skills):
             if skill_r in skill:
                 counter[i] += 1
 
+# Выводит промежуточные обработанные данные
+
 
 def logger(counter, skills_reqired, skills, names):
     print(counter)
     print(skills_reqired)
     print(skills)
     print(names)
+
+# Выводит ответ
 
 
 def answer_writer(counter, skills_reqired, skills, names):
@@ -93,4 +111,5 @@ def answer_writer(counter, skills_reqired, skills, names):
         return []
 
 
+# Вызов главного метода
 distribute()
